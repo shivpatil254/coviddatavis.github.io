@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <head>
+        <meta charset="utf-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    
+        <!-- Bootstrap CSS -->
+        <!-- function to merge all css files in main.css -->
+        <!-- build:css css/main.css -->
+        <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        />
+        <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/solid.js" integrity="sha384-/BxOvRagtVDn9dJ+JGCtcofNXgQO/CCCVKdMfL115s3gOgQxWaX/tSq5V8dRgsbc" crossorigin="anonymous"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/fontawesome.js" integrity="sha384-dPBGbj4Uoy1OOpM4+aRGfAOc0W37JkROT+3uynUgTHZCHZNMHfGXsmmvYTffZjYO" crossorigin="anonymous"></script>
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://d3js.org/d3.v4.js"></script>
+        <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+        <script type="text/javascript" src="js/lib/jquery-1.11.1.min.js" ></script>
+        <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+    <link href="./src/css/styles.css" rel="stylesheet" />
+</script>
+
+        <title> Project - Data Visulization </title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.6.0/d3.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        font-family: Lato;
+      }
+
+      .axis-x path {
+        stroke: #000;
+      }
+
+      .line {
+        fill: none;
+        stroke-width: 1.5px;
+        stroke-linejoin: "round";
+        stroke-linecap: "round";
+      }
+
+      .line:hover {
+        stroke-width: 2px;
+      }
+
+      #containerbody {
+        width: 75%;
+        margin: auto;
+        padding-top: 3%;
+        display: flex;
+        flex-wrap: wrap;
+        background-color: white;
+        text-align: "center";
+      }
+      #headline {
+        min-width: 100%;
+      }
+
+      #menu {
+        display: inline;
+        width: 100%;
+        border: 2px solid black;
+        padding: 1%;
+      }
+
+      #nation {
+        display: inline-table;
+        padding-left: 1%;
+      }
+
+      span {
+        color: rgb(25, 159, 139);
+      }
+
+      .activeheader {
+        color: red;
+        font-weight: 600;
+        background-color: white;
+        padding: 5px;
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      .activeheadertext {
+        color: black;
+        padding: 0px;
+        margin: 0px;
+        padding-top: 4px;
+      }
+    </style>
+  </head>
+
+  <body style="background-color: rgb(228, 249, 252); margin: 0px">
+    <nav class="navbar navbar-dark navbar-expand-sm" style="background-color: black;">
+      <div class="container">
+        <!-- button to toggle menu on navbar -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#Navbar"
+        >
+          <!-- Bootstrap hamburger icon -->
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- div for collapsible navbar content. Div acts as a wrapper to the unordered list -->
+        <div class="collapse navbar-collapse ml-0 ml-sm-3" id="Navbar">
+          <ul class="navbar-nav mr-auto ">
+            <li class="nav-item mx-4">
+              <a class="nav-link text-center" href="index1.html"
+                >Geospatial Visualization
+                - 1</a
+              >
+            </li>
+            <li class="nav-item mx-4">
+              <a class="nav-link text-center" href="index2.html"
+                > Geospatial Visualization - 2</a
+              >
+            </li>
+            <li class="nav-item mx-4">
+              <a class="nav-link text-center" href="../../index3.html"
+                > Stacked Bar Chart</a
+              >
+            </li>
+           
+            <li class="nav-item mx-4 activeheader " >
+              <p class="activeheadertext "  
+                >Line Chart</p
+              >
+            </li>
+            <li class="nav-item mx-4">
+              <a class="nav-link text-center" href="../../index10.html"
+                > Bar Chart - United States Covid cases by states</a
+              >
+            </li>
+           
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="headerContainer">
+      <div style="justify-content: center; padding-top: 50px;">
+        <nav class="navbar navbar-light navbar-expand-sm " >
+          <div class="container ">
+            <!-- button to toggle menu on navbar -->
+            
+            <!-- div for collapsible navbar content. Div acts as a wrapper to the unordered list -->
+            <div class="  ml-0 ml-sm-3" id="Navbar">
+              <ul class="navbar-nav mr-auto bg-warning ">
+                <li class="nav-item  " style="border: 1px solid #aaa; background-color: #f0ad4e;">
+                  <a class="nav-link text-center" href="index5.html"
+                    >Total number of Confirmed Covid-19 Cases</a
+                  >
+                </li>
+                <li class="nav-item  " style="border: 1px solid #aaa">
+                  <a class="nav-link text-center" href="index7.html"
+                    >Total number of tests  </a
+                  >
+                </li>
+                
+                <li class="nav-item  " style="border: 1px solid #aaa">
+                  <a class="nav-link text-center" href="index6.html"
+                    >Total number of Confirmed Covid-19 Deaths</a
+                  >
+                </li>
+                <li class="nav-item  " style="border: 1px solid #aaa">
+                  <a class="nav-link text-center" href="index13.html"
+                    >Vaccination</a
+                  >
+                </li>
+
+                <li class="nav-item  " style="border: 1px solid #aaa">
+                  <a class="nav-link text-center" href="index11.html"
+                    >Confimed Covid Cases - USA</a
+                  >
+                </li>
+                <li class="nav-item  " style="border: 1px solid #aaa">
+                  <a class="nav-link text-center" href="index12.html"
+                    >Confirmed Death Cases - USA </a
+                  >
+                </li>
+               
+               
+              </ul>
+            </div>
+          </div>
+        </nav>
+        </div>
+    </div>
+    
+
+    <div id="containerbody">
+      <p>
+        Click on the following countries to see total number of confirmed covid
+        cases per million people.
+      </p>
+
+      <div id="menu"></div>
+
+      <div class="graph">
+        <svg width="800" height="500"></svg>
+      </div>
+    </div>
+
+    <script>
+      // here is the code explained: https://gist.github.com/sjengle/478b85594bb048574826be43f7eeac9b
+
+      //define chart margins
+      let svg = d3.select("svg"),
+        margin = {
+          top: 30,
+          right: 80,
+          bottom: 40,
+          left: 50,
+        },
+        width = svg.attr("width") - margin.left - margin.right,
+        height = svg.attr("height") - margin.top - margin.bottom,
+        g = svg
+          .append("g")
+          .attr(
+            "transform",
+            "translate(" + margin.left + "," + margin.top + ")"
+          );
+
+      //define time format
+      var parseTime = d3.timeParse("%Y");
+
+      //define scales
+      let x = d3.scaleTime().range([0, width]),
+        y = d3.scaleLinear().range([height, 0]),
+        //color scale
+        z = d3.scaleOrdinal(d3.schemeCategory20);
+
+      //define line generator
+      let line = d3
+        .line()
+        .curve(d3.curveBasis)
+        .x(function (d) {
+          return x(d.Year);
+        })
+        .y(function (d) {
+          return y(d.expenditure);
+        });
+
+      //load data
+      data = d3.csv(
+        "linechart-total-confirm-cases.csv",
+        type,
+        function (error, data) {
+          if (error) throw error;
+
+          // format the data
+          // data.forEach( function(d) {
+          //   console.log(d.Year);
+          // d.Year = parseTime(d.Year);
+          // console.log(d.Year)
+          // });
+
+          //parse data
+          var countries = data.columns.slice(1).map(function (id) {
+            return {
+              id: id,
+              values: data.map(function (d) {
+                return {
+                  Year: d.Year,
+                  expenditure: d[id],
+                };
+              }),
+            };
+          });
+
+          //
+
+          //define x axis
+          x.domain(
+            d3.extent(data, function (d) {
+              return d.Year;
+            })
+          );
+          //define y axis
+          y.domain([
+            d3.min(countries, function (c) {
+              return d3.min(c.values, function (d) {
+                return d.expenditure;
+              });
+            }),
+            d3.max(countries, function (c) {
+              return d3.max(c.values, function (d) {
+                return d.expenditure;
+              });
+            }),
+          ]);
+
+          //define color scale
+          z.domain(
+            countries.map(function (c) {
+              return c.id;
+            })
+          );
+
+          //append x axis
+          g.append("g")
+            .attr("class", "axis axis-x")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x))
+            .append("text")
+            // .attr("transform", "rotate(-90)")
+            .attr("y", 20)
+            .attr("x", 310)
+            .attr("dy", "0.9em")
+            .attr("fill", "#000")
+            .text("Year")
+            .append("text")
+            // .attr("transform", "rotate(-90)")
+            .attr("y", 20)
+            .attr("x", 310)
+            .attr("dy", "0.9em")
+            .attr("fill", "#000")
+            .text("Source:Sipri");
+
+          //append y axis
+          g.append("g")
+            .attr("class", "axis axis-y")
+            .call(d3.axisLeft(y))
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", -50)
+            .attr("x", -125)
+            .attr("dy", "0.9em")
+            .attr("fill", "#000")
+            .text("Number_Of_Confirmed_Cases");
+
+          //append country data to svg
+          let country = g
+            .selectAll(".country")
+            .data(countries)
+            .enter()
+            .append("g")
+            .attr("class", "country");
+          // 	d3.selectAll(".myCheckbox").on("change",update);
+          // update();
+
+          // append country path to svg
+          country
+            .append("path")
+            .attr("class", "line")
+            .attr("id", function (d) {
+              return "line-" + d.id;
+            })
+            .attr("d", function (d) {
+              return line(d.values);
+            })
+            .style("stroke", function (d) {
+              return z(d.id);
+            })
+            .attr("opacity", 0);
+
+          var longY = function (d) {
+            return d.value.Year.length;
+          };
+          var longE = function (d) {
+            return d.value.Year.length;
+          };
+          // append country labels to svg
+          country
+            .append("text")
+            .datum(function (d) {
+              return { id: d.id, value: d.values[d.values.length - 1] };
+            })
+            .attr("transform", function (d) {
+              return (
+                "translate(" +
+                x(d.value.Year) +
+                "," +
+                y(d.value.expenditure) +
+                ")"
+              );
+            })
+            .attr("x", 3)
+            .attr("id", function (d) {
+              return "text-" + d.id;
+            })
+            .attr("dy", "0.35em")
+            .style("font", "11px sans-serif")
+            .attr("opacity", 0)
+            .text(function (d) {
+              return d.id;
+            });
+
+          for (let i = 0; i < countries.length; i++) {
+            var tick = document.createElement("input");
+            tick.type = "checkbox";
+            tick.id = "myCheckbox";
+            tick.name = countries[i].id;
+            tick.value = countries[i].id;
+
+            var label = document.createElement("label");
+            label.for = countries[i].id;
+            label.appendChild(document.createTextNode(countries[i].id));
+            var divcheck = document.createElement("div");
+            divcheck.id = "nation";
+            // tick.appendChild(document.createTextNode(countries[i].id));
+            divcheck.appendChild(tick);
+            divcheck.appendChild(label);
+            document.getElementById("menu").appendChild(divcheck);
+
+            tick.addEventListener("click", function () {
+              var lineSelected = this.value;
+              var svgline = d3.select("#line-" + lineSelected);
+              var textline = d3.select("#text-" + lineSelected);
+              console.log(svgline);
+              console.log(textline);
+
+              if (svgline.attr("opacity") === "0") {
+                // console.log('making it visible');
+                svgline.attr("opacity", 1);
+              } else {
+                svgline.attr("opacity", 0);
+              }
+
+              if (textline.attr("opacity") === "0") {
+                // console.log('making it visible');
+                textline.attr("opacity", 1);
+              } else {
+                textline.attr("opacity", 0);
+              }
+              this.style.background = "#555";
+              this.style.color = "white";
+            });
+          }
+        }
+      );
+
+      //bind with multiseries data
+      function type(d, _, columns) {
+        d.Year = parseTime(d.Year);
+        //iterate through each column
+        for (var i = 1, n = columns.length, c; i < n; ++i)
+          d[(c = columns[i])] = +d[c];
+
+        //bind column data to year
+        return d;
+      }
+    </script>
+  </body>
+</html>

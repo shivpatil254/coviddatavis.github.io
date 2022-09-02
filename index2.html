@@ -1,0 +1,321 @@
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+
+  <head>
+      <meta charset="utf-8" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      />
+      <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  
+      <!-- Bootstrap CSS -->
+      <!-- function to merge all css files in main.css -->
+      <!-- build:css css/main.css -->
+      <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      />
+      <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/solid.js" integrity="sha384-/BxOvRagtVDn9dJ+JGCtcofNXgQO/CCCVKdMfL115s3gOgQxWaX/tSq5V8dRgsbc" crossorigin="anonymous"></script>
+      <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/fontawesome.js" integrity="sha384-dPBGbj4Uoy1OOpM4+aRGfAOc0W37JkROT+3uynUgTHZCHZNMHfGXsmmvYTffZjYO" crossorigin="anonymous"></script>
+      <link href="css/styles.css" rel="stylesheet" />
+      <script src="https://d3js.org/d3.v4.js"></script>
+      <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+      <script type="text/javascript" src="js/lib/jquery-1.11.1.min.js" ></script>
+      <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous">
+  <link href="./src/css/styles.css" rel="stylesheet" />
+</script>
+    <style>
+      /*  ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        } */
+
+      .header {
+        text-align: left;
+        color: black;
+      }
+
+      .header h1 {
+        padding-top: 1px;
+      }
+
+      input {
+        width: 70%;
+      }
+      select {
+        margin: 10px 0;
+      }
+
+      .sectioncontainer {
+        margin: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        alignment: center;
+      }
+
+      .small {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .tooltip {
+        height: 30px;
+        width: 100px;
+        position: absolute;
+        opacity: 1%;
+        background: #f7f2aa;
+      }
+
+      .tooltip p {
+        margin: 0 2px;
+      }
+
+      #map svg {
+        background-color: white;
+        padding: 20px;
+        border: 2px solid #000000;
+        border-radius: 10px;
+      }
+      .tooltipData {
+        font-size: medium;
+      }
+      li a {
+                display: block;
+                /* to change color of font header we can change below color */
+                color: blue;
+                text-align: center;
+                padding: 12px 14px;
+                text-decoration: none;
+            }
+
+            li a:hover:not(.active) {
+                /* background-color: #ddd; */
+                /* color: black */
+            }
+
+
+      .activeheader {
+        color: red;
+        font-weight: 600;
+        background-color: white;
+        padding: 5px;
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      .activeheadertext {
+        color: black;
+        padding: 0px;
+        margin: 0px;
+        padding-top: 4px;
+      }
+    </style>
+            <title> Project - Data Visulization </title>
+
+  </head>
+
+  <body style="background-color: powderblue">
+    <nav class="navbar navbar-dark navbar-expand-sm" style="background-color: black;">
+      <div class="container">
+        <!-- button to toggle menu on navbar -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#Navbar"
+        >
+          <!-- Bootstrap hamburger icon -->
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- div for collapsible navbar content. Div acts as a wrapper to the unordered list -->
+        <div class="collapse navbar-collapse ml-0 ml-sm-3" id="Navbar">
+          <ul class="navbar-nav mr-auto ">
+            <li class="nav-item mx-4">
+              <a class="nav-link" href="index1.html"
+                > Geospatial Visualization - 1</a
+              >
+            </li>
+            
+            <li class="nav-item mx-4 activeheader " >
+              <p class="activeheadertext "  
+                >Geospatial Visualization
+                - 2</p
+              >
+            </li>
+            <li class="nav-item mx-4">
+              <a class="nav-link" href="../../index3.html"
+                > Stacked Bar Chart</a
+              >
+            </li>
+            <li class="nav-item mx-4">
+              <a class="nav-link" href="../../index5.html"
+                > Line Chart</a
+              >
+            </li>
+            <li class="nav-item mx-4">
+              <a class="nav-link" href="../../index10.html"
+                > Bar Chart - United States Covid cases by states</a
+              >
+            </li>
+           
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <section class="header" style="margin-top: 60px;">
+      <div>
+        <p>Total Cases Per Year: <span id="year"></span></p>
+        <label>
+          Slide over years
+          <input type="range" name="slider" step="1" />
+        </label>
+      </div>
+    </section>
+    <section class="sectioncontainer">
+      <div id="map">
+        <svg><title>Map of Visualization</title></svg>
+      </div>
+
+      <div class="tooltip"></div>
+    </section>
+    <script src="https://d3js.org/d3.v4.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://unpkg.com/topojson@3"></script>
+    <script>
+      //main JS file
+      var width = 1000;
+      var height = 500;
+      var minValue, maxValue, geoData, totalData;
+
+      d3.queue()
+        .defer(
+          d3.csv,
+          "https://raw.githubusercontent.com/shivpatil254/masterprojectgeospatialpart12/main/testslidergeodataforbrazil.csv",
+          (row, i, header) => {
+            return {
+              Country_name: row.Country,
+              country_code: row["Country Code"],
+              year: +row.Year,
+              emission_per_cap: +row["Emissions_Per_Capita"],
+              emissions: +row["Emissions"],
+              vaccinations: +row["Vaccinations"],
+            };
+          }
+        )
+        .defer(d3.json, "https://unpkg.com/world-atlas@1/world/110m.json")
+        .await((error, countryData, topoData) => {
+          if (error) console.log(error);
+          else {
+            totalData = countryData;
+            minValue = d3.min(countryData, (d) => d.year);
+            maxValue = d3.max(countryData, (d) => d.year);
+            d3.select("#year").text(minValue);
+            geoData = topojson.feature(
+              topoData,
+              topoData.objects.countries
+            ).features;
+            var yearData = countryData.filter((d) => d.year === minValue);
+            var select = d3
+              .select(".header")
+              .append("select")
+              .property("name", "emission types");
+            select
+              .append("option")
+              .property("value", "emission_per_cap")
+              .text("Total Confirmed Cases");
+            select
+              .append("option")
+              .text("Total Confirmed Death Cases")
+              .property("value", "emissions");
+            select
+              .append("option")
+              .text("Vaccinations")
+              .property("value", "vaccinations");
+            var map = d3
+              .select("#map")
+              .selectAll("svg")
+              .attr("width", width)
+              .attr("height", height);
+            d3.select(".header")
+              .select("input")
+              .property("min", minValue)
+              .property("max", maxValue)
+              .property("value", minValue)
+              .on("input", function () {
+                var val = +d3.event.target.value;
+                d3.select("#year").text(val);
+                yearData = countryData.filter((d) => d.year === val);
+                Visualize_map(yearData);
+              });
+            d3.select("select").on("change", function () {
+              Visualize_map(yearData);
+            });
+            Visualize_map(yearData);
+          }
+        });
+      var Visualize_map = function (yearData) {
+        //   var projection = d3.geoMercator()
+        var projection = d3.geoEquirectangular();
+        // .scale(120)
+        // .translate([width/2, height/2]);
+        var path = d3.geoPath().projection(projection);
+        var colorValues = {
+          emission_per_cap: ["#ffcccb", "#8b0000"],
+          emissions: ["#ffcccb", "#8b0000"],
+          vaccinations: ["#feffe8", "#21442c"],
+        };
+        var val = d3.select("select").property("value");
+        console.log(val);
+        var colorScale = d3
+          .scaleLinear()
+          .domain(d3.extent(yearData, (d) => d[val]))
+          .range(colorValues[val]);
+        var vis = d3
+          .select("#map")
+          .select("svg")
+          .selectAll(".map")
+          .data(geoData);
+        vis.style("stroke", "none").attr("fill", (d) => {
+          var Country_name = yearData.filter((c) => c.country_code === d.id);
+          if (Country_name.length === 0) return "#ccc";
+          else return colorScale(Country_name[0][val]);
+        });
+        var used;
+        vis
+          .enter()
+          .append("path")
+          .classed("map", true)
+          .attr("d", path)
+          .on("mousemove touchstart", function (d) {
+            //var tooltip = d3.select('.tooltip')
+
+            tooltip
+              .style("opacity", 1)
+              .style(
+                "left",
+                d3.event.pageX - tooltip.node().offsetWidth / 2 + "px"
+              )
+              .style("top", d3.event.pageY + 20 + "px")
+              .html("<div class='tooltipData'>Name:</div>");
+          })
+          .attr("d", path)
+          .attr("fill", (d) => {
+            var Country_name = yearData.filter((c) => c.country_code === d.id);
+            if (Country_name.length === 0) return "#ccc";
+            else return colorScale(Country_name[0][val]);
+          });
+      };
+    </script>
+  </body>
+</html>
