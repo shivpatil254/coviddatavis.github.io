@@ -284,7 +284,7 @@
     ).then(function (data) {
       // Update description
       $("#desc").text(
-        "Total # of confirmed " +
+        "Total number of confirmed " +
           report +
           " in " +
           state +
@@ -310,7 +310,7 @@
       // Draw the bars
       svg
         .append("g")
-        .attr("fill", "steelblue")
+        .attr("fill", "blue")
         .selectAll("bar")
         .data(data)
         .enter()
